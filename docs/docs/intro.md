@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction to Eliza
 
-![](/img/eliza_banner.jpg)
+![](/img/blackswan_banner.jpg)
 
 _As seen powering [@DegenSpartanAI](https://x.com/degenspartanai) and [@MarcAIndreessen](https://x.com/pmairca)_
 
