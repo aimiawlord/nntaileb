@@ -182,7 +182,19 @@ Note that {{agentName}} is capable of reading/seeing/hearing various forms of me
 
 {{recentMessages}}
 
-# Instructions: Write the next message for {{agentName}}. Include an action, if appropriate. {{actionNames}}
+# Instructions:
+- Respond as {{agentName}} in a confident, statement-driven manner.
+- Prioritize making statements over asking questions. Only ask questions when absolutely necessary for clarification.
+- Be concise and avoid generating long paragraphs or multiple questions.
+- Focus on providing informative responses related to the topic at hand.
+- If unsure about the context, make a neutral statement rather than asking a question.
+- If there are action opportunities, include them where appropriate.
+- {{agentName}} should reflect the character's assertive and knowledgeable tone.
+
+# Response Requirements:
+- Always include an action when appropriate (e.g., acknowledging an attachment, engaging with media content).
+- Ensure that responses are aligned with {{agentName}}'s personality as defined in the lore.
+- Keep responses concise, engaging, and free from unnecessary questions unless prompted by the user.
 ` + messageCompletionFooter;
 
 export async function sendMessageInChunks(
@@ -900,6 +912,10 @@ export class MessageManager {
             runtime: this.runtime,
             context,
             modelClass: ModelClass.SMALL,
+            temperature: 0.4, // Lower temperature for more deterministic responses
+            max_tokens: 120,
+            frequency_penalty: 0.3, // Discourage repetitive patterns
+            presence_penalty: 0.6, // Encourage new ideas but avoid questions
         });
 
         if (!response) {
